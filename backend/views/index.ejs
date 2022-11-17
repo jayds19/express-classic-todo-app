@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div id="success-message" class="message success-bg hide"></div>
+    <div id="failure-message" class="message failure-bg hide"></div>
+    <main>
+        <table>
+          <thead>
+            <tr>
+              <th>Completed</th>
+              <th>Task</th>
+              <th>Added On</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <form method="post" action="/save">
+              <tr>
+                <td>
+                  <input type="checkbox" name="completed" />
+                </td>
+                <td>
+                  <input type="text" name="description" required />
+                </td>
+                <td></td>
+                <td>
+                  <button type="submit">Guardar</button>
+                </td>
+              </tr>
+            </form>
+          </tbody>
+          <tbody>
+            <% taskList.forEach((task)=>{ %>
+            <tr>
+              <td>
+                <input type="checkbox" name="completed" id="target_checkbox_<%= task.id %>" value="<%= task.id %>" class="target-checkbox" <%= task.completed == 1  ? "checked":"" %> />
+              </td>
+              <td><%= task.description %></td>
+              <td><%= task.created_on %></td>
+              <td>
+                <form method="post" action="/delete">
+                  <input type="hidden" name="id" value="<%= task.id %>" />
+                  <button type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </main>
+      <script type="text/javascript" src="/javascripts/main.js"></script>
+      <script type="text/javascript">
+        var checkboxList = document.querySelectorAll(".target-checkbox");
+        checkboxList.forEach(function(checkbox) {
+          checkbox.addEventListener("click",function() {
+            updateTaskRequest(checkbox.value, checkbox.checked);
+          });
+        });
+      </script>
+      <% if(error){ %>
+        <script type="text/javascript">
+            showMessage("success-message", "<%= error %>");
+        </script>
+      <% } %>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+version: "3"
+services:
+  server:
+    build: ./backend/
+    image: jayds19/node-web-app
+    ports:
+      - "3000:3000"
+    networks:
+      - my-network
+networks:
+  my-network:
+    driver: bridge

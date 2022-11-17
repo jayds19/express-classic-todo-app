@@ -1,0 +1,83 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.message {
+    padding: 1em;
+    color: white;
+    font-weight: bold;
+    margin: 10px 2px;
+}
+
+.hide {
+  display: none;
+}
+
+.hide-animation {
+  animation: hideMessage 0.3s ease-in 3s forwards;
+}
+
+@keyframes hideMessage {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+    display: none;
+  }
+}
+
+.show {
+  display: block;
+}
+
+.show-animation {
+  animation: hideMessage 0.3s ease-in 3s forwards;
+}
+
+@keyframes showMessage {
+  0% {
+    display: block;
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-bg {
+  background-color: rgb(34, 140, 34);
+  box-shadow: 0 1px 1px rgba(34,140,34,0.11), 
+              0 2px 2px rgba(34,140,34,0.11), 
+              0 4px 4px rgba(34,140,34,0.11), 
+              0 6px 8px rgba(34,140,34,0.11),
+              0 8px 16px rgba(34,140,34,0.11);
+}
+
+.failure-bg {
+  background-color: rgb(219, 58, 58);
+  box-shadow: 0 1px 1px rgba(219,58,58,0.11), 
+  0 2px 2px rgba(219,58,58,0.11), 
+  0 4px 4px rgba(219,58,58,0.11), 
+  0 6px 8px rgba(219,58,58,0.11),
+  0 8px 16px rgba(219,58,58,0.11);
+}
